@@ -17,4 +17,10 @@ https://github.com/YeshNels/FashionFreaks this is the main group Github link, it
 
 The following screenshots demonstrates the application:
 
-![Screenshots.](./Screenshot1.png)
+![Screenshots1.](./Screenshot1.png)
+![Screenshots2.](./Screenshot2.png)
+
+## URL
+
+The URL of deployed application:
+https://fashion-freak.vercel.app/
