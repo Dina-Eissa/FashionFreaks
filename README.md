@@ -17,4 +17,4 @@ https://github.com/YeshNels/FashionFreaks this is the main group Github link, it
 
 The following screenshots demonstrates the application:
 
-![Screenshots](./Screenshot 1.png)
+![Screenshots](../Screenshot 1.png)
