@@ -1,5 +1,4 @@
-import { ReactNode } from "react";
-import { FaShoppingCart } from "react-icons/fa";
+import React from "react";
 import {
   Box,
   Flex,
@@ -11,18 +10,26 @@ import {
   Menu,
   MenuButton,
   MenuList,
+  MenuItem,
+  MenuDivider,
   useDisclosure,
   useColorModeValue,
   Stack,
-  Image,
 } from "@chakra-ui/react";
-import Cart from "./Cart";
 import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
+import { FaShoppingCart, FaHome } from "react-icons/fa";
+import { Link as RouterLink } from "react-router-dom";
+import { SignIn } from "./SignIn";
 
-const Links = ["Home", "Shop"];
+const Links = [
+  { name: "Home", to: "/", icon: FaHome },
+  { name: "Shop", to: "/shop", icon: FaShoppingCart },
+];
 
-const NavLink = ({ children }: { children: ReactNode }) => (
+const NavLink = ({ to, children, icon }) => (
   <Link
+    as={RouterLink}
+    to={to}
     px={2}
     py={1}
     rounded={"md"}
@@ -30,9 +37,11 @@ const NavLink = ({ children }: { children: ReactNode }) => (
       textDecoration: "none",
       bg: useColorModeValue("gray.200", "gray.700"),
     }}
-    href={"#"}
   >
-    {children}
+    <HStack>
+      {icon && <Icon as={icon} />}
+      {children}
+    </HStack>
   </Link>
 );
 
@@ -51,20 +60,16 @@ export default function Navbar() {
             onClick={isOpen ? onClose : onOpen}
           />
           <HStack spacing={8} alignItems={"center"}>
-            <Image
-              src="../assets/logo.png"
-              alt="Logo"
-              width="150px"
-              rounded="sm"
-              shadow="lg"
-            />
+            <Box>Logo</Box>
             <HStack
               as={"nav"}
               spacing={4}
               display={{ base: "none", md: "flex" }}
             >
               {Links.map((link) => (
-                <NavLink key={link}>{link}</NavLink>
+                <NavLink key={link.name} to={link.to} icon={link.icon}>
+                  {link.name}
+                </NavLink>
               ))}
             </HStack>
           </HStack>
@@ -86,16 +91,19 @@ export default function Navbar() {
                   <Icon as={FaShoppingCart} w={6} h={8} />
                 </MenuButton>
                 <MenuList>
-                  <Cart />
+                  <MenuItem>Link 1</MenuItem>
+                  <MenuItem>Link 2</MenuItem>
+                  <MenuDivider />
+                  <MenuItem>Link 3</MenuItem>
                 </MenuList>
               </Menu>
 
               <Button
-                as={"a"}
+                as={RouterLink} // Use RouterLink instead of "a" tag
+                to={SignIn} // Set the path to your SignIn component
                 fontSize={"sm"}
                 fontWeight={400}
                 variant={"link"}
-                href={"#"}
               >
                 Sign In
               </Button>
@@ -120,7 +128,9 @@ export default function Navbar() {
           <Box pb={4} display={{ md: "none" }}>
             <Stack as={"nav"} spacing={4}>
               {Links.map((link) => (
-                <NavLink key={link}>{link}</NavLink>
+                <NavLink key={link.name} to={link.to} icon={link.icon}>
+                  {link.name}
+                </NavLink>
               ))}
             </Stack>
           </Box>

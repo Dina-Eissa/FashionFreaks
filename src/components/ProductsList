@@ -1,0 +1,169 @@
+// ProductList.js
+import React from "react";
+import { Flex, Heading, Box, Divider } from "@chakra-ui/react";
+import ProductCard from "./ProductCard";
+
+const sunglassesData = [
+  {
+    isNew: true,
+    imageURL:
+      "https://images.unsplash.com/photo-1508296695146-257a814070b4?q=80&w=1480&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    name: "Stylish Sunglasses",
+    price: 49.99,
+  },
+  {
+    isNew: false,
+    imageURL:
+      "https://ducoglasses.com/cdn/shop/products/2_d06c10cb-9994-4492-8062-6d3118670e98.jpg?v=1629360440&width=1568.8000000000002&height=1568.8000000000002",
+    name: "Classic Aviators",
+    price: 39.99,
+  },
+  {
+    isNew: false,
+    imageURL:
+      "https://images.unsplash.com/photo-1572635196237-14b3f281503f?q=80&w=1480&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    name: "Classic Aviators",
+    price: 39.99,
+  },
+  {
+    isNew: true,
+    imageURL:
+      "https://media.tiffany.com/is/image/Tiffany/EcomItemL2/tiffany-hardwearsunglasses-72301366_1047240_ED.jpg?&op_usm=1.0,1.0,6.0&$cropN=0.1,0.1,0.8,0.8&defaultImage=NoImageAvailableInternal&&defaultImage=NoImageAvailableInternal&fmt=webp",
+    name: "Stylish Sunglasses",
+    price: 49.99,
+  },
+  {
+    isNew: false,
+    imageURL:
+      "https://ducoglasses.com/cdn/shop/products/2_d06c10cb-9994-4492-8062-6d3118670e98.jpg?v=1629360440&width=1568.8000000000002&height=1568.8000000000002",
+    name: "Classic Aviators",
+    price: 39.99,
+  },
+  {
+    isNew: true,
+    imageURL:
+      "https://images.unsplash.com/photo-1511499767150-a48a237f0083?q=80&w=1480&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    name: "Classic Aviators",
+    price: 39.99,
+  },
+  // Add more sunglasses data as needed
+];
+
+export const beltsData = [
+  {
+    isNew: true,
+    imageURL: "https://via.placeholder.com/300",
+    name: "Classic Leather Belt",
+    price: 29.99,
+  },
+  {
+    isNew: true,
+    imageURL: "https://via.placeholder.com/300",
+    name: "Classic Leather Belt",
+    price: 29.99,
+  },
+  {
+    isNew: false,
+    imageURL: "https://via.placeholder.com/300",
+    name: "Stylish Buckle Belt",
+    price: 39.99,
+  },
+];
+
+export const shoesData = [
+  {
+    isNew: false,
+    imageURL: "https://via.placeholder.com/300",
+    name: "Running Shoes",
+    price: 79.99,
+  },
+  // Add more shoes data...
+
+  // Example shoes data
+  {
+    isNew: true,
+    imageURL: "https://via.placeholder.com/300",
+    name: "Casual Sneakers",
+    price: 54.99,
+  },
+];
+function RowHeader({ children }) {
+  return (
+    <Box ml={10} mr={10} position="relative">
+      <Heading as="h2" color="gray.500" fontSize="25px">
+        {children}
+      </Heading>
+      <Divider
+        position="absolute"
+        top="40px"
+        left={0}
+        width="100%"
+        borderColor="#fe9a1b"
+        borderBottomWidth="2px"
+      />
+    </Box>
+  );
+}
+
+function ProductList() {
+  return (
+    <>
+      <Flex direction="column" justify="center">
+        <RowHeader>Sunglasses</RowHeader>
+        <Flex
+          p={5}
+          w="full"
+          alignItems="center"
+          justifyContent="space-between"
+          flexWrap="wrap"
+        >
+          {sunglassesData.map((product, index) => (
+            <ProductCard
+              key={index}
+              product={product}
+              style={{
+                flexBasis: { base: "100%", sm: "48%", md: "40%", lg: "30%" },
+              }}
+            />
+          ))}
+        </Flex>
+      </Flex>
+
+      <Flex direction="column" alignItems="center" justify="center">
+        <Heading as="h2" size="xl" mb={4}>
+          Belts
+        </Heading>
+        <Flex
+          p={5}
+          w="full"
+          alignItems="center"
+          justifyContent="space-between"
+          flexWrap="wrap"
+        >
+          {beltsData.map((product, index) => (
+            <ProductCard key={index} product={product} />
+          ))}
+        </Flex>
+      </Flex>
+
+      <Flex direction="column" alignItems="center" justify="center">
+        <Heading as="h2" size="xl" mb={4}>
+          Shoes
+        </Heading>
+        <Flex
+          p={5}
+          w="full"
+          alignItems="center"
+          justifyContent="space-between"
+          flexWrap="wrap"
+        >
+          {shoesData.map((product, index) => (
+            <ProductCard key={index} product={product} />
+          ))}
+        </Flex>
+      </Flex>
+    </>
+  );
+}
+
+export default ProductList;

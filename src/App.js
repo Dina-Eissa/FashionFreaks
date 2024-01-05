@@ -1,19 +1,20 @@
 import React from "react";
+import { ChakraProvider } from "@chakra-ui/react";
 import Navbar from "./components/Navbar";
 import Header from "./components/Header";
-import ProductAddToCart from "./components/Card";
-import SimpleCard from "./components/signIn";
+import ProductList from "./components/ProductList";
+import { CartProvider } from "./components/CartContext";
 
-// In our main App component, we are rendering only single instances of Header and Navbar and several instances of Card
-function App() {
+const App = () => {
   return (
-    <div>
-      <Navbar />
-      <Header />
-      <ProductAddToCart />
-      <SimpleCard />
-    </div>
+    <ChakraProvider>
+      <CartProvider>
+        <Navbar />
+        <Header />
+        <ProductList />
+      </CartProvider>
+    </ChakraProvider>
   );
-}
+};
 
 export default App;
