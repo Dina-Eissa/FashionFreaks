@@ -23,4 +23,4 @@ The following screenshots demonstrates the application:
 ## URL
 
 The URL of deployed application:
-[https://fashion-freak.vercel.app/](https://fashion-freaks.vercel.app/)https://fashion-freaks.vercel.app/
+https://fashion-freaks.vercel.app/
